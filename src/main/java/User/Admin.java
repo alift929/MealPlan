@@ -4,10 +4,56 @@
  */
 package User;
 
+import Interface.Loginable;
+import Meal.Meal;
+import Meal.Recipe;
+import java.util.Scanner;
+
 /**
  *
  * @author alift
  */
-public class Admin {
+public class Admin implements Loginable{
+    private final String username = "admin";
+    private final String password = "admin";
+    private boolean loginStatus = false;
+    private Scanner scanner = new Scanner(System.in);
     
+    public Admin(){}
+    
+    public boolean login(){
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+        if(this.username.equals(username)&&this.password.equals(password)){
+            System.out.println("Admin login successfull");
+            loginStatus = true;
+            return true;
+        }else{
+            System.out.println("Admin login failed");
+            return false;
+        }
+    }
+    
+    public void register(){
+        System.out.println("Registration not allowed!");
+    }
+    
+    public Recipe searchRecipe(Meal meal){
+        System.out.print("Enter recipe name: ");
+        Scanner scanner = new Scanner(System.in);
+        String search = scanner.nextLine();
+        return meal.searchRecipe(search);
+    }
+    
+//    public void addRecipe(Meal meal){
+//        meal.addRecipe();
+//    }
+    
+    public void deleteRecipe(Meal meal){
+        System.out.println("Delete recipe-");
+        Recipe deletedRecipe = searchRecipe(meal);
+        meal.removeRecipe(deletedRecipe);
+    }
 }

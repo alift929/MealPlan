@@ -4,10 +4,64 @@
  */
 package Meal;
 
+import Nutrition.FoodNutrition;
+import java.util.List;
+
 /**
  *
  * @author alift
  */
 public class Recipe {
+    private String recipeName;
+    private FoodNutrition foodNutrition;
+    private List<String> ingredients;
+    private List<String> tools;
+    private List<String> steps;
+
+    public Recipe(String recipeName, FoodNutrition foodNutrition, List<String> ingredients, List<String> tools, List<String> steps) {
+        this.recipeName = recipeName;
+        this.foodNutrition = foodNutrition;
+        this.ingredients = ingredients;
+        this.tools = tools;
+        this.steps = steps;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
     
+    public void showRecipeMinima(){
+        System.out.printf("- %s",recipeName);
+    }
+    
+    public void showRecipeDetails(){
+        System.out.printf("Name %s\n\n",recipeName);
+        System.out.println("Ingredients:");
+        int i=1;
+        for(String ingredient: ingredients){
+            System.out.printf("%d: %s\n", i, ingredient);
+            i++;
+        }
+        System.out.println("\nTools:");
+        i=1;
+        for(String tool: tools){
+            System.out.printf("%d: %s\n",i,tool);
+            i++;
+        }
+        System.out.println("\nStep:");
+        i=1;
+        for(String step: steps){
+            System.out.printf("%d: %s\n", i, step);
+            i++;
+        }
+        System.out.println("\nNutrition: ");
+        System.out.printf("Calories: %d\n", foodNutrition.getCalories());
+        System.out.printf("Carbs: %d\n", foodNutrition.getCarbs());
+        System.out.printf("Fat: %d\n", foodNutrition.getFat());
+        System.out.printf("Protein: %d\n", foodNutrition.getProtein());
+    }    
 }

@@ -8,6 +8,6 @@ package Nutrition;
  *
  * @author alift
  */
-public class Nutrition {
+public abstract class Nutrition {
     
 }

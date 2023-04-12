@@ -4,6 +4,8 @@
 
 package com.mealgroup.mealplan;
 
+import Application.Application;
+
 /**
  *
  * @author alift
@@ -11,6 +13,7 @@ package com.mealgroup.mealplan;
 public class MealPlan {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Application app = new Application();
+        app.menu();
     }
 }
