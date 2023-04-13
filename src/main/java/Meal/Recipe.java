@@ -58,10 +58,6 @@ public class Recipe {
             System.out.printf("%d: %s\n", i, step);
             i++;
         }
-        System.out.println("\nNutrition: ");
-        System.out.printf("Calories: %d\n", foodNutrition.getCalories());
-        System.out.printf("Carbs: %d\n", foodNutrition.getCarbs());
-        System.out.printf("Fat: %d\n", foodNutrition.getFat());
-        System.out.printf("Protein: %d\n", foodNutrition.getProtein());
+        foodNutrition.displayNutrition();
     }    
 }

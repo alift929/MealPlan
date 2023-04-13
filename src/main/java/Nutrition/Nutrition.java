@@ -9,5 +9,12 @@ package Nutrition;
  * @author alift
  */
 public abstract class Nutrition {
-    
+    protected int calories;
+    protected int protein;
+    protected int carbs;
+    protected int fat;
+
+    public abstract void setNutrition();
+
+    public abstract void displayNutrition();
 }

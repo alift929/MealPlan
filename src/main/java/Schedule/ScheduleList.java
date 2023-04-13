@@ -94,7 +94,7 @@ public class ScheduleList {
         searchedSchedule.removeRecipe(searchedSchedule.searchRecipeInSchedule(recipeName));
     }
     
-    public void showScheduleMinima(){
+    public void showScheduleRecipeName(){
         for (Schedule schedule: schedules){
             System.out.printf("Date: %s\n",schedule.getDate());
             schedule.showScheduleMinima();

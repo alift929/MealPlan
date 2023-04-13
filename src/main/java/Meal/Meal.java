@@ -69,18 +69,18 @@ public class Meal {
         protein = scanner.nextInt();
         System.out.print("Enter the carbohydrates: ");
         carbs = scanner.nextInt();
-        System.out.println("Enter the fats: ");
+        System.out.print("Enter the fats: ");
         fat = scanner.nextInt();
         
         foodNutrition = new FoodNutrition();
-        foodNutrition.setFoodNutrition(calories, protein, carbs, fat);
+        foodNutrition.setNutrition(calories, protein, carbs, fat);
         Recipe recipe = new Recipe(recipeName, foodNutrition, ingredients, tools, steps);
         recipes.add(recipe);
     }
     
     public void addRecipeNoInput(String recipeName, int calories, int protein, int carbs, int fat, List<String> ingredients, List<String> tools, List<String> steps){
         FoodNutrition foodNutrition = new FoodNutrition();
-        foodNutrition.setFoodNutrition(calories, protein, carbs, fat);
+        foodNutrition.setNutrition(calories, protein, carbs, fat);
         Recipe recipe = new Recipe(recipeName, foodNutrition, ingredients, tools, steps);
         recipes.add(recipe);
     }
@@ -104,6 +104,11 @@ public class Meal {
         }
         return searchedRecipe;
     }
-    
+
+    public void showRecipeName(){
+        for(Recipe recipe: recipes){
+            System.out.println(recipe.getRecipeName());
+        }
+    }
     
 }

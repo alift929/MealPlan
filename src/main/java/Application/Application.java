@@ -18,7 +18,6 @@ import java.util.Scanner;
  * @author alift
  */
 public class Application {
-    private boolean isLoggedIn = false;
     private Meal dataMeal = new Meal();
     private List<User> userList = new ArrayList<User>();
     Admin admin = new Admin();
@@ -47,6 +46,8 @@ public class Application {
         int profileSettingsChoice = -1;
         int scheduleChoice = -1;
         int recipeChoice = -1;
+        int nutritionChoice = -1;
+        int adminHomeChoice = -1;
         
         while(mainChoice != 0){
             mainMenu();
@@ -56,10 +57,10 @@ public class Application {
                 case 1:
                     user = new User();
                     user.register();
+                    user.setNutrition(user);
                     break;
                 case 2:
-                    isLoggedIn = user.login();
-                    if(!isLoggedIn){
+                    if(!user.login()){
                         break;
                     }
                     
@@ -96,6 +97,9 @@ public class Application {
                                                         user.changeGender();
                                                         break;
                                                     case 6:
+                                                        user.changeAge();
+                                                        break;
+                                                    case 7:
                                                         user.changeHeightWeight();
                                                         break;
                                                     case 0:
@@ -136,7 +140,7 @@ public class Application {
                                             user.removeScheduleRecipe();
                                             break;
                                         case 5:
-                                            user.showScheduleMinima();
+                                            user.showScheduleRecipeName();
                                             break;
                                         case 6:
                                             user.showScheduleDetails();
@@ -151,7 +155,23 @@ public class Application {
                                 scheduleChoice = -1;
                                 break;
                             case 3:
-                                System.out.println("Nutrition");
+
+                                while(nutritionChoice != 0){
+                                    nutritionMenu();
+                                    nutritionChoice = scanner.nextInt();
+
+                                    switch (nutritionChoice){
+                                        case 1:
+                                            user.displayNutritionNeed();
+                                            break;
+                                        case 0:
+                                            break;
+                                        default:
+                                            System.out.println("Invalid");
+                                            break;
+                                    }
+                                }
+                                nutritionChoice = -1;
                                 break;
                             case 4:
                                 while(recipeChoice != 0){
@@ -160,9 +180,26 @@ public class Application {
 
                                     switch(recipeChoice){
                                         case 1:
-
+                                            user.addRecipe();
+                                            break;
+                                        case 2:
+                                            user.searchRecipe();
+                                            break;
+                                        case 3:
+                                            user.showRecipe(dataMeal);
+                                            break;
+                                        case 4:
+                                            user.removeRecipe();
+                                            break;
+                                        case 0:
+                                            break;
+                                        default:
+                                            System.out.println("Invalid");
+                                            break;
                                     }
                                 }
+                                recipeChoice = -1;
+                                break;
                             case 0:
                                 System.out.println("Exiting program");
                                 break;
@@ -174,7 +211,34 @@ public class Application {
                     homeChoice = -1;
                     break;
                 case 3:
-                    admin.login();
+                    if(!admin.login()){
+                        break;
+                    }
+                    while(adminHomeChoice != 0){
+                        adminHomeMenu();
+                        adminHomeChoice = scanner.nextInt();
+
+                        switch (adminHomeChoice){
+                            case 1:
+                                admin.addRecipe(dataMeal);
+                                break;
+                            case 2:
+                                admin.searchRecipe(dataMeal);
+                                break;
+                            case 3:
+                                admin.deleteRecipe(dataMeal);
+                                break;
+                            case 4:
+                                admin.showRecipe(dataMeal);
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                System.out.println("Invalid");
+                                break;
+                        }
+                    }
+                    adminHomeChoice = -1;
                     break;
                 default:
                     System.out.println("Invalid");
@@ -198,7 +262,7 @@ public class Application {
         System.out.println("2. Schedule");
         System.out.println("3. Nutrition");
         System.out.println("4. Recipe");
-        System.out.println("0. Back");
+        System.out.println("0. Logout");
         System.out.print("\nEnter your choice: ");
     }
     
@@ -218,7 +282,8 @@ public class Application {
         System.out.println("3. Change Name");
         System.out.println("4. Change E-mail");
         System.out.println("5. Change Gender");
-        System.out.println("6. Change Height & Weight");
+        System.out.println("6. Change Age");
+        System.out.println("7. Change Height & Weight");
         System.out.println("0. Back");
         System.out.print("\nEnter your choice: ");
     }
@@ -242,7 +307,24 @@ public class Application {
         System.out.println("3. Show recipe");
         System.out.println("4. Remove recipe");
         System.out.println("0. Back");
-        System.out.println("\nEnter your choice");
+        System.out.print("\nEnter your choice: ");
+    }
+
+    public void nutritionMenu(){
+        System.out.println("\nNUTRITION");
+        System.out.println("1. Nutrition needs");
+        System.out.println("0. Back");
+        System.out.print("\nEnter your choice: ");
+    }
+
+    public void adminHomeMenu(){
+        System.out.println("\nADMIN HOME MENU");
+        System.out.println("1. Add recipe");
+        System.out.println("2. Search recipe");
+        System.out.println("3. Remove recipe");
+        System.out.println("4. Show recipe");
+        System.out.println("0. Logout");
+        System.out.print("\nEnter your choice: ");
     }
     
     public void newData(){

@@ -8,7 +8,7 @@ import Interface.Loginable;
 import Meal.Meal;
 import Meal.Recipe;
 import Schedule.ScheduleList;
-import java.util.List;
+import Nutrition.UserNutrition;
 import java.util.Scanner;
 
 /**
@@ -26,20 +26,24 @@ public class User implements Loginable {
     private String name;
     private String email;
     private Gender gender;
+    private int age;
     private int height;
     private int weight;
     private boolean loginStatus;
     private ScheduleList scheduleList;
-    private List<Recipe> recipes;
+    private Meal recipes;
+    private UserNutrition userNutrition;
     Scanner scanner = new Scanner(System.in);
     
     public User(){
         scheduleList = new ScheduleList();
+        recipes = new Meal();
+        userNutrition = new UserNutrition();
     }
     
     public void register(){
         String username, password, name, email, gender;
-        int height, weight;
+        int age, height, weight;
         System.out.print("Name: ");
         name = scanner.nextLine();
         System.out.print("Username: ");
@@ -50,18 +54,21 @@ public class User implements Loginable {
         email = scanner.nextLine();
         System.out.print("Gender (Male/Female): ");
         gender = scanner.nextLine();
+        System.out.print("Age: ");
+        age = scanner.nextInt();
         System.out.print("Height: ");
         height = scanner.nextInt();
         System.out.print("Weight: ");
         weight = scanner.nextInt();
         
         
-        if(username.length()>4 && password.length()>=8){
+        if(username.length()>=4 && password.length()>=8){
             this.username = username;
             this.password = password;
             this.name = name;
             this.email = email;
             this.gender = Gender.valueOf(gender);
+            this.age = age;
             this.height = height;
             this.weight = weight;
             System.out.println("Registration successfull");
@@ -114,7 +121,7 @@ public class User implements Loginable {
     public void changeName(){
         System.out.print("CHANGE NAME\nEnter new name: ");
         String temp = scanner.nextLine();
-        if(temp.length()>4){
+        if(temp.length()>0){
             this.name = temp;
             System.out.println("Change name successfull");
         }else{
@@ -143,9 +150,20 @@ public class User implements Loginable {
             System.out.println("gender invalid");
         }
     }
+
+    public void changeAge(){
+        System.out.print("CHANGE AGE\nEnter new age: ");
+        int temp = scanner.nextInt();
+        if(temp > 0){
+            this.age = temp;
+            System.out.println("Change age successfull");
+        }else{
+            System.out.println("Age invalid");
+        }
+    }
     
     public void changeHeightWeight(){
-        System.out.print("CHANGE Height\nEnter new height: ");
+        System.out.print("CHANGE HEIGHT\nEnter new height: ");
         int temp = scanner.nextInt();
         if(temp > 0){
             this.height = temp;
@@ -169,10 +187,37 @@ public class User implements Loginable {
         scheduleList.addSchedule(meal);
     }
     
-    public void showScheduleMinima(){
-        scheduleList.showScheduleMinima();
+    public void showScheduleRecipeName(){
+        scheduleList.showScheduleRecipeName();
     }
-    
+
+    public void addRecipe(){
+        recipes.addRecipeInput();
+    }
+
+    public void searchRecipe(){
+        System.out.print("Enter recipe name to search: ");
+        String search = scanner.nextLine();
+        recipes.searchRecipe(search).showRecipeDetails();
+    }
+
+    public void showRecipe(Meal meal){
+        System.out.println("RECIPES\n");
+        recipes.showRecipeName();
+        for(Recipe recipe: meal.getRecipes()){
+            System.out.println(recipe.getRecipeName());
+        }
+    }
+
+    public void removeRecipe(){
+        System.out.print("Enter recipe name to remove: ");
+        String search = scanner.nextLine();
+        Recipe remove = recipes.searchRecipe(search);
+        if(remove!=null){
+            recipes.removeRecipe(remove);
+        }
+    }
+
     public void showScheduleDetails(){
         scheduleList.showScheduleDetails();
     }
@@ -189,5 +234,27 @@ public class User implements Loginable {
         System.out.printf("Name: %s\n",name);
         System.out.printf("Username: %s\n", username);
         System.out.printf("Email: %s\n\n", email);
+    }
+
+    public void setNutrition(User user){
+        userNutrition.setNutrition(user);
+    }
+    public void displayNutritionNeed(){
+        userNutrition.displayNutrition();
+    }
+    public String getGender() {
+        return gender.toString();
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 }

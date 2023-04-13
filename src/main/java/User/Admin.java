@@ -40,20 +40,27 @@ public class Admin implements Loginable{
         System.out.println("Registration not allowed!");
     }
     
-    public Recipe searchRecipe(Meal meal){
-        System.out.print("Enter recipe name: ");
-        Scanner scanner = new Scanner(System.in);
+    public void searchRecipe(Meal meal){
+        System.out.println("Enter recipe name to search: ");
         String search = scanner.nextLine();
-        return meal.searchRecipe(search);
+        meal.searchRecipe(search).showRecipeDetails();
     }
     
-//    public void addRecipe(Meal meal){
-//        meal.addRecipe();
-//    }
+    public void addRecipe(Meal meal){
+        meal.addRecipeInput();
+    }
     
     public void deleteRecipe(Meal meal){
-        System.out.println("Delete recipe-");
-        Recipe deletedRecipe = searchRecipe(meal);
-        meal.removeRecipe(deletedRecipe);
+        System.out.println("Enter recipe name to delete: ");
+        String search = scanner.nextLine();
+        Recipe remove = meal.searchRecipe(search);
+        if(remove != null){
+            meal.removeRecipe(remove);
+        }
+    }
+
+    public void showRecipe(Meal meal){
+        System.out.println("RECIPES\n");
+        meal.showRecipeName();
     }
 }
