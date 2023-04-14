@@ -41,9 +41,11 @@ public class Admin implements Loginable{
     }
     
     public void searchRecipe(Meal meal){
-        System.out.println("Enter recipe name to search: ");
+        System.out.print("Enter recipe name to search: ");
         String search = scanner.nextLine();
-        meal.searchRecipe(search).showRecipeDetails();
+        if(meal.searchRecipe(search)!=null){
+            meal.searchRecipe(search).showRecipeDetails();
+        }
     }
     
     public void addRecipe(Meal meal){

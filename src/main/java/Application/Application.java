@@ -183,7 +183,7 @@ public class Application {
                                             user.addRecipe();
                                             break;
                                         case 2:
-                                            user.searchRecipe();
+                                            user.searchRecipe(dataMeal);
                                             break;
                                         case 3:
                                             user.showRecipe(dataMeal);
@@ -329,90 +329,88 @@ public class Application {
     
     public void newData(){
         
-        List<String> ingredients = new ArrayList<String>();
-        List<String> tools = new ArrayList<String>();
-        List<String> steps = new ArrayList<String>();
+        List<String> ingredients1 = new ArrayList<String>();
+        List<String> tools1 = new ArrayList<String>();
+        List<String> steps1 = new ArrayList<String>();
+        List<String> ingredients2 = new ArrayList<String>();
+        List<String> tools2 = new ArrayList<String>();
+        List<String> steps2 = new ArrayList<String>();
+        List<String> ingredients3 = new ArrayList<String>();
+        List<String> tools3 = new ArrayList<String>();
+        List<String> steps3 = new ArrayList<String>();
         
-        ingredients.add("1 cup of uncooked rice");
-        ingredients.add("2 chicken breasts");
-        ingredients.add("8 cups of chicken stock");
-        ingredients.add("3 cloves of garlic, minced");
-        ingredients.add("2 stalks of green onion, thinly sliced");
-        ingredients.add("2 tablespoons of vegetable oil");
-        ingredients.add("1 tablespoon of sesame oil");
-        ingredients.add("Salt and pepper to taste");
-        ingredients.add("Fried shallots (optional)");
-        ingredients.add("Soy sauce (optional)");
-        ingredients.add("Hard-boiled eggs (optional)");
+        ingredients1.add("1 cup of uncooked rice");
+        ingredients1.add("2 chicken breasts");
+        ingredients1.add("8 cups of chicken stock");
+        ingredients1.add("3 cloves of garlic, minced");
+        ingredients1.add("2 stalks of green onion, thinly sliced");
+        ingredients1.add("2 tablespoons of vegetable oil");
+        ingredients1.add("1 tablespoon of sesame oil");
+        ingredients1.add("Salt and pepper to taste");
+        ingredients1.add("Fried shallots (optional)");
+        ingredients1.add("Soy sauce (optional)");
+        ingredients1.add("Hard-boiled eggs (optional)");
         
-        tools.add("Rice cooker or pot");
-        tools.add("Large pot");
-        tools.add("Cutting board");
-        tools.add("Knife");
-        tools.add("Mixing spoon");
-        tools.add("Bowls for serving");
+        tools1.add("Rice cooker or pot");
+        tools1.add("Large pot");
+        tools1.add("Cutting board");
+        tools1.add("Knife");
+        tools1.add("Mixing spoon");
+        tools1.add("Bowls for serving");
         
-        steps.add("Rinse the rice in cold water until the water runs clear. Drain and set aside.");
-        steps.add("Cut the chicken breasts into small pieces and season with salt and pepper.");
-        steps.add("Heat the vegetable oil in a large pot over medium-high heat. Add the garlic and sauté until fragrant.");
-        steps.add("Add the chicken to the pot and cook until browned on all sides.");
-        steps.add("Pour in the chicken stock and bring to a boil.");
-        steps.add("Add the rice to the pot and stir well.");
-        steps.add("Reduce the heat to low and let the porridge simmer for about 30-40 minutes, stirring occasionally to prevent sticking to the bottom of the pot.");
-        steps.add("Once the porridge is thick and creamy, add the sesame oil and green onion. Stir well.");
-        steps.add("Taste and adjust seasoning if needed.");
-        steps.add("Ladle the porridge into bowls and top with fried shallots, soy sauce, and hard-boiled eggs, if desired.");
+        steps1.add("Rinse the rice in cold water until the water runs clear. Drain and set aside.");
+        steps1.add("Cut the chicken breasts into small pieces and season with salt and pepper.");
+        steps1.add("Heat the vegetable oil in a large pot over medium-high heat. Add the garlic and sauté until fragrant.");
+        steps1.add("Add the chicken to the pot and cook until browned on all sides.");
+        steps1.add("Pour in the chicken stock and bring to a boil.");
+        steps1.add("Add the rice to the pot and stir well.");
+        steps1.add("Reduce the heat to low and let the porridge simmer for about 30-40 minutes, stirring occasionally to prevent sticking to the bottom of the pot.");
+        steps1.add("Once the porridge is thick and creamy, add the sesame oil and green onion. Stir well.");
+        steps1.add("Taste and adjust seasoning if needed.");
+        steps1.add("Ladle the porridge into bowls and top with fried shallots, soy sauce, and hard-boiled eggs, if desired.");
+
+        dataMeal.addRecipeNoInput("Bubur Ayam", 340, 24, 38, 8, ingredients1, tools1, steps1);
+
+        ingredients2.add("3 large eggs");
+        ingredients2.add("1/4 cup diced bell peppers");
+        ingredients2.add("1/4 cup diced onion");
+        ingredients2.add("1/4 cup shredded cheddar cheese");
+        ingredients2.add("1 tablespoon butter or oil");
+        ingredients2.add("Salt and pepper to taste");
         
-        dataMeal.addRecipeNoInput("Bubur Ayam", 340, 24, 38, 8, ingredients, tools, steps);
+        tools2.add("Medium-sized non-stick frying pan");
+        tools2.add("Mixing bowl");
+        tools2.add("Whisk or fork");
+        tools2.add("Spatula");
         
-        ingredients.clear();
-        tools.clear();
-        steps.clear();
+        steps2.add("In a mixing bowl, whisk the eggs until they are well beaten.");
+        steps2.add("Add the diced bell peppers, onions, and shredded cheese to the eggs, and stir to combine.");
+        steps2.add("Heat a non-stick frying pan over medium heat and add the butter or oil.");
+        steps2.add("Once the butter has melted or the oil is hot, pour the egg mixture into the pan.");
+        steps2.add("Use a spatula to spread the mixture evenly across the pan.");
+        steps2.add("Let the omelette cook for 2-3 minutes, or until the bottom is golden brown.");
+        steps2.add("Use a spatula to fold the omelette in half.");
+        steps2.add("Let the omelette cook for an additional 1-2 minutes, or until the cheese is melted and the eggs are fully cooked.");
+        steps2.add("Slide the omelette onto a plate and serve hot.");
+
+        dataMeal.addRecipeNoInput("Omelette", 350, 23, 7, 26, ingredients2, tools2, steps2);
+
+        ingredients3.add("1 ripe avocado");
+        ingredients3.add("1 cup of milk (or almond milk for a dairy-free option)");
+        ingredients3.add("1/2 cup of ice cubes");
+        ingredients3.add("1 tablespoon of honey");
+        ingredients3.add("1/4 teaspoon of vanilla extract");
         
-        ingredients.add("3 large eggs");
-        ingredients.add("1/4 cup diced bell peppers");
-        ingredients.add("1/4 cup diced onion");
-        ingredients.add("1/4 cup shredded cheddar cheese");
-        ingredients.add("1 tablespoon butter or oil");
-        ingredients.add("Salt and pepper to taste");
+        tools3.add("Blender");
+        tools3.add("Knife");
+        tools3.add("Spoon");
         
-        tools.add("Medium-sized non-stick frying pan");
-        tools.add("Mixing bowl");
-        tools.add("Whisk or fork");
-        tools.add("Spatula");
-        
-        steps.add("In a mixing bowl, whisk the eggs until they are well beaten.");
-        steps.add("Add the diced bell peppers, onions, and shredded cheese to the eggs, and stir to combine.");
-        steps.add("Heat a non-stick frying pan over medium heat and add the butter or oil.");
-        steps.add("Once the butter has melted or the oil is hot, pour the egg mixture into the pan.");
-        steps.add("Use a spatula to spread the mixture evenly across the pan.");
-        steps.add("Let the omelette cook for 2-3 minutes, or until the bottom is golden brown.");
-        steps.add("Use a spatula to fold the omelette in half.");
-        steps.add("Let the omelette cook for an additional 1-2 minutes, or until the cheese is melted and the eggs are fully cooked.");
-        steps.add("Slide the omelette onto a plate and serve hot.");
-        
-        dataMeal.addRecipeNoInput("Omelette", 350, 23, 7, 26, ingredients, tools, steps);
-        
-        ingredients.clear();
-        tools.clear();
-        steps.clear();
-        
-        ingredients.add("1 ripe avocado");
-        ingredients.add("1 cup of milk (or almond milk for a dairy-free option)");
-        ingredients.add("1/2 cup of ice cubes");
-        ingredients.add("1 tablespoon of honey");
-        ingredients.add("1/4 teaspoon of vanilla extract");
-        
-        tools.add("Blender");
-        tools.add("Knife");
-        tools.add("Spoon");
-        
-        steps.add("Cut the avocado in half lengthwise and remove the pit. Use a spoon to scoop out the flesh into the blender.");
-        steps.add("Add the milk, ice cubes, honey, and vanilla extract to the blender.");
-        steps.add("Blend the mixture on high speed for about 30-45 seconds, or until smooth and creamy.");
-        steps.add("Pour the avocado juice into a glass and serve immediately.");
-    
-        dataMeal.addRecipeNoInput("Avocado Juice", 295, 7, 29, 18, ingredients, tools, steps);
+        steps3.add("Cut the avocado in half lengthwise and remove the pit. Use a spoon to scoop out the flesh into the blender.");
+        steps3.add("Add the milk, ice cubes, honey, and vanilla extract to the blender.");
+        steps3.add("Blend the mixture on high speed for about 30-45 seconds, or until smooth and creamy.");
+        steps3.add("Pour the avocado juice into a glass and serve immediately.");
+
+        dataMeal.addRecipeNoInput("Avocado Juice", 295, 7, 29, 18, ingredients3, tools3, steps3);
         
     }
 }

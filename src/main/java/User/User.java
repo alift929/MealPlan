@@ -62,7 +62,7 @@ public class User implements Loginable {
         weight = scanner.nextInt();
         
         
-        if(username.length()>=4 && password.length()>=8){
+        if(username.length()>0 && password.length()>=8){
             this.username = username;
             this.password = password;
             this.name = name;
@@ -195,10 +195,15 @@ public class User implements Loginable {
         recipes.addRecipeInput();
     }
 
-    public void searchRecipe(){
+    public void searchRecipe(Meal meal){
         System.out.print("Enter recipe name to search: ");
         String search = scanner.nextLine();
-        recipes.searchRecipe(search).showRecipeDetails();
+        if(meal.searchRecipe(search)!=null){
+            meal.searchRecipe(search).showRecipeDetails();
+        }
+        if(recipes.searchRecipe(search)!=null){
+            recipes.searchRecipe(search).showRecipeDetails();
+        }
     }
 
     public void showRecipe(Meal meal){

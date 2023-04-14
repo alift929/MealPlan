@@ -54,10 +54,18 @@ public class Schedule {
         return searchedRecipe;
     }
     
-    public void showScheduleMinima(){
+    public void showScheduleRecipeName(){
+        boolean isNull = false;
         for(Recipe recipe: recipes){
+            if(recipe == null){
+                isNull = true;
+                break;
+            }
             recipe.showRecipeMinima();
             System.out.println();
+        }
+        if(isNull){
+            System.out.println("Recipe empty");
         }
     }
     

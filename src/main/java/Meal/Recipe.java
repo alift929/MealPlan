@@ -39,7 +39,7 @@ public class Recipe {
     }
     
     public void showRecipeDetails(){
-        System.out.printf("Name %s\n\n",recipeName);
+        System.out.printf("Name: %s\n\n",recipeName);
         System.out.println("Ingredients:");
         int i=1;
         for(String ingredient: ingredients){

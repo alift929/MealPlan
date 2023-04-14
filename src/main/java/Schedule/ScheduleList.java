@@ -48,10 +48,12 @@ public class ScheduleList {
         if(isExist){
             temp = schedules.get(i);
             temp.addRecipe(recipe);
+            System.out.println("Add recipe successful");
         }else{
             temp = new Schedule(date);
             temp.addRecipe(recipe);
             schedules.add(temp);
+            System.out.println("Add schedule successful");
         }
     }
     
@@ -97,7 +99,7 @@ public class ScheduleList {
     public void showScheduleRecipeName(){
         for (Schedule schedule: schedules){
             System.out.printf("Date: %s\n",schedule.getDate());
-            schedule.showScheduleMinima();
+            schedule.showScheduleRecipeName();
         }
     }
     

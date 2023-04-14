@@ -84,6 +84,8 @@ public class Meal {
         Recipe recipe = new Recipe(recipeName, foodNutrition, ingredients, tools, steps);
         recipes.add(recipe);
     }
+
+
     
     public void removeRecipe(Recipe recipe){
         recipes.removeIf(element -> element.getRecipeName().equals(recipe.getRecipeName()));
