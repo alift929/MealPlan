@@ -68,4 +68,12 @@ public class UserNutrition extends Nutrition {
         double carbsNeeded = (caloriesNeeded(user) - (proteinNeeded*4) - (fatNeeded*9))/4;
         return carbsNeeded;
     }
+
+    public void caloriesDecrease(int cal){
+        this.calories -= cal;
+    }
+
+    public int getCal(){
+        return this.calories;
+    }
 }

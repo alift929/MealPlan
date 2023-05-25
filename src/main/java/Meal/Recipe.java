@@ -34,7 +34,7 @@ public class Recipe {
         this.recipeName = recipeName;
     }
     
-    public void showRecipeMinima(){
+    public void showRecipeList(){
         System.out.printf("- %s",recipeName);
     }
     
@@ -59,5 +59,9 @@ public class Recipe {
             i++;
         }
         foodNutrition.displayNutrition();
-    }    
+    }
+
+    public int getFoodCalories(){
+        return foodNutrition.getCalories();
+    }
 }

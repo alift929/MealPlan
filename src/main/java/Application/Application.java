@@ -48,6 +48,7 @@ public class Application {
         int recipeChoice = -1;
         int nutritionChoice = -1;
         int adminHomeChoice = -1;
+        int createScheduleChoice = -1;
         
         while(mainChoice != 0){
             mainMenu();
@@ -128,7 +129,24 @@ public class Application {
                                     
                                     switch(scheduleChoice){
                                         case 1:
-                                            user.createSchedule(dataMeal);
+                                            while(createScheduleChoice != 0){
+                                                createScheduleMenu();
+                                                createScheduleChoice = scanner.nextInt();
+
+                                                switch(createScheduleChoice){
+                                                    case 1:
+                                                        user.createScheduleCal(dataMeal);
+                                                        break;
+                                                    case 2:
+                                                        user.createSchedule(dataMeal);
+                                                        break;
+                                                    case 0:
+                                                        break;
+                                                    default:
+                                                        System.out.println("Invalid");
+                                                }
+                                            }
+                                            createScheduleChoice = -1;
                                             break;
                                         case 2:
                                             user.createSchedule(dataMeal);
@@ -300,12 +318,20 @@ public class Application {
         System.out.print("\nEnter your choice: ");
     }
 
+    private void createScheduleMenu(){
+        System.out.println("\nCREATE SCHEDULE");
+        System.out.println("1. Choose meal based on calories");
+        System.out.println("2. Input meal");
+        System.out.println("0. Back");
+        System.out.print("\nEnter your choice: ");
+    }
+
     public void recipeMenu(){
         System.out.println("\nRECIPE");
-        System.out.println("1. Create recipe");
-        System.out.println("2. Search recipe");
-        System.out.println("3. Show recipe");
-        System.out.println("4. Remove recipe");
+        System.out.println("1. Create meal recipe");
+        System.out.println("2. Search meal recipe");
+        System.out.println("3. Show meal recipe");
+        System.out.println("4. Remove meal recipe");
         System.out.println("0. Back");
         System.out.print("\nEnter your choice: ");
     }

@@ -16,6 +16,9 @@ public class FoodNutrition extends Nutrition {
 
     }
 
+    public int getCalories(){
+        return this.calories;
+    }
     public void setNutrition(int calories, int protein, int carbs, int fat){
         if(calories < 0&& protein < 0 && carbs < 0 && fat < 0){
             System.out.println("Invalid Nutrition");

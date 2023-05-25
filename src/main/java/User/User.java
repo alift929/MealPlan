@@ -9,7 +9,10 @@ import Meal.Meal;
 import Meal.Recipe;
 import Schedule.ScheduleList;
 import Nutrition.UserNutrition;
+
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -78,6 +81,7 @@ public class User implements Loginable {
     }
     
     public boolean login(){
+        scanner.nextLine();
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
@@ -181,10 +185,50 @@ public class User implements Loginable {
             System.out.println("weight invalid");
         }
     }
+
     
     public void createSchedule(Meal meal){
         System.out.println("CREATE SCHEDULE");
-        scheduleList.addSchedule(meal);
+
+        System.out.print("Enter date (\"dd-mm-yyyy\"): ");
+        String date = scanner.nextLine();
+
+        System.out.print("Enter recipe name: ");
+        String search = scanner.nextLine();
+
+        scheduleList.addSchedule(meal, this.userNutrition, date,search);
+    }
+
+    public void createScheduleCal(Meal meal){
+        System.out.println("CREATE SCHEDULE");
+
+        scanner.nextLine();
+        System.out.print("Enter date (\"dd-mm-yyyy\"): ");
+        String date = scanner.nextLine();
+
+        List<Recipe> temp = recipes.showRecipeNameBasedOnCalories(meal, userNutrition.getCal());
+
+        List<String> recipeName = temp.stream()
+                .map(Recipe::getRecipeName)
+                .collect(Collectors.toList());
+
+
+        System.out.print("Choose meal: ");
+        int search = scanner.nextInt();
+
+        temp.get(search-1).showRecipeDetails();
+
+        System.out.println("\nChoose:");
+        System.out.println("1. Add to schedule\n0. Back");
+        System.out.print("Enter your choice: ");
+
+        int choice = scanner.nextInt();
+
+        if (choice == 1){
+            String recipeSearch = recipeName.get(search-1);
+            scheduleList.addSchedule(meal, this.userNutrition, date, recipeSearch);
+        }
+
     }
     
     public void showScheduleRecipeName(){

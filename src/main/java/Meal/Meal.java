@@ -8,6 +8,7 @@ import Nutrition.FoodNutrition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -84,8 +85,6 @@ public class Meal {
         Recipe recipe = new Recipe(recipeName, foodNutrition, ingredients, tools, steps);
         recipes.add(recipe);
     }
-
-
     
     public void removeRecipe(Recipe recipe){
         recipes.removeIf(element -> element.getRecipeName().equals(recipe.getRecipeName()));
@@ -112,5 +111,23 @@ public class Meal {
             System.out.println(recipe.getRecipeName());
         }
     }
-    
+
+    public List<Recipe> showRecipeNameBasedOnCalories(Meal meal, int cal) {
+        List<Recipe> allRecipe = new ArrayList<Recipe>();
+
+        allRecipe.addAll(recipes);
+        allRecipe.addAll(meal.getRecipes());
+
+        List<Recipe> temp = allRecipe.stream()
+                .filter(e -> e.getFoodCalories() <= cal)
+                .collect(Collectors.toList());
+
+        int i=1;
+        for(Recipe r: temp){
+            System.out.printf("%d. %s\n",i,r.getRecipeName());
+            i++;
+        }
+
+        return temp;
+    }
 }

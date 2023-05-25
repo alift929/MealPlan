@@ -6,6 +6,9 @@ package Schedule;
 
 import Meal.Meal;
 import Meal.Recipe;
+import Nutrition.UserNutrition;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,18 +27,15 @@ public class ScheduleList {
         schedules = new ArrayList<Schedule>();
     }
     
-    public void addSchedule(Meal meal){
+    public void addSchedule(Meal meal, UserNutrition userNutrition, String date, String search){
         
         boolean isExist = false;
         int i=0;
         
-        System.out.print("Enter date (\"dd-mm-yyyy\"): ");
-        String date = scanner.nextLine();
-        
-        System.out.print("Enter recipe name: ");
-        String search = scanner.nextLine();
+
         
         Recipe recipe = meal.searchRecipe(search);
+        userNutrition.caloriesDecrease(recipe.getFoodCalories());
         
         for(Schedule schedule: schedules){
             if(schedule.getDate().equals(date)){

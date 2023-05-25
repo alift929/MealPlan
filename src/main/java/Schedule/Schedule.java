@@ -61,7 +61,7 @@ public class Schedule {
                 isNull = true;
                 break;
             }
-            recipe.showRecipeMinima();
+            recipe.showRecipeList();
             System.out.println();
         }
         if(isNull){
