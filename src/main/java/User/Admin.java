@@ -36,6 +36,10 @@ public class Admin implements Loginable{
         }
     }
     
+    public boolean login(String username, String password){
+        return true;
+    }
+    
     public void register(){
         System.out.println("Registration not allowed!");
     }

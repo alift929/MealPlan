@@ -7,7 +7,6 @@ package Schedule;
 import Meal.Meal;
 import Meal.Recipe;
 import Nutrition.UserNutrition;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;

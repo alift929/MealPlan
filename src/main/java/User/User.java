@@ -33,6 +33,7 @@ public class User implements Loginable {
     private int height;
     private int weight;
     private boolean loginStatus;
+    private boolean registerStatus;
     private ScheduleList scheduleList;
     private Meal recipes;
     private UserNutrition userNutrition;
@@ -42,6 +43,21 @@ public class User implements Loginable {
         scheduleList = new ScheduleList();
         recipes = new Meal();
         userNutrition = new UserNutrition();
+    }
+    
+    public User(String name, String username, String password, String email, String gender, int age, int height, int weight){
+        scheduleList = new ScheduleList();
+        recipes = new Meal();
+        userNutrition = new UserNutrition();
+        
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.gender = Gender.valueOf(gender);
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
     }
     
     public void register(){
@@ -63,7 +79,6 @@ public class User implements Loginable {
         height = scanner.nextInt();
         System.out.print("Weight: ");
         weight = scanner.nextInt();
-        
         
         if(username.length()>0 && password.length()>=8){
             this.username = username;
@@ -95,6 +110,17 @@ public class User implements Loginable {
             return false;
         }
     }
+    
+    public boolean login(String username, String password){
+        if(this.username.equals(username)&&this.password.equals(password)){
+            loginStatus = true;
+            return true;
+        } else {
+            loginStatus = false;
+            return false;
+        }
+    }
+    
     public void changeUsername(){
         System.out.print("CHANGE USERNAME\nEnter new username: ");
         String temp = scanner.nextLine();
@@ -288,9 +314,11 @@ public class User implements Loginable {
     public void setNutrition(User user){
         userNutrition.setNutrition(user);
     }
+    
     public void displayNutritionNeed(){
         userNutrition.displayNutrition();
     }
+    
     public String getGender() {
         return gender.toString();
     }

@@ -4,7 +4,11 @@
 
 package com.mealgroup.mealplan;
 
-import Application.Application;
+//import Application.*;
+import Controller.*;
+//import View.MainFrame;
+
+
 
 /**
  *
@@ -13,7 +17,11 @@ import Application.Application;
 public class MealPlan {
 
     public static void main(String[] args) {
-        Application app = new Application();
-        app.menu();
+//        Application app = new Application();
+//        app.menu();
+
+//        MainFrame mainFrame = new MainFrame();
+//        mainFrame.setVisible(true);
+        Controller controller = new Controller();
     }
 }
